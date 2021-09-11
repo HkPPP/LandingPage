@@ -16,23 +16,63 @@ export default function Home() {
 
       <div className="min-h-screen bg-white text-center">
         <div className="flex flex-col md:flex-row-reverse">
+
           {/* Right */}
           <div className="bg-white rounded p-4">
-            {/* <div className="md:flex md:items-center mb-6">
-              <div className="md:w-1/3">
-                <label className="block text-gray-500 font-bold md:text-right mb-1 md:mb-0 pr-4" htmlFor="inline-full-name">
-                  Full Name
-                </label>
+            <form className="w-full max-w-lg">
+            <h2 className="text-black font-bold text-s">SEND US A MESSAGE</h2>
+
+              <div className="flex flex-wrap -mx-3 p-4">
+                <div className="w-full md:w-1/2 px-3 md:mb-0">
+                  <label className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2 text-left">
+                    First Name
+                  </label>
+                  <input className="appearance-none block w-full bg-gray-200 text-gray-700 border border-red-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white" id="grid-first-name"></input>
+                </div>
+                <div className="w-full md:w-1/2 px-3 md:mb-0">
+                  <label className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2 text-left">
+                    Last Name
+                  </label>
+                  <input className="appearance-none block w-full bg-gray-200 text-gray-700 border border-red-500 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white" id="grid-last-name"></input>
+                </div>
               </div>
-              <div className="md:w-2/3">
-                <input className="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-500" id="inline-full-name" type="text" value="Jane Doe"></input>
+
+              <div className="flex flex-wrap -mx-3 p-4">
+                <div className="w-full md:w-1/2 px-3 md:mb-0">
+                  <label className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2 text-left">
+                    Email
+                  </label>
+                  <input className="appearance-none block w-full bg-gray-200 text-gray-700 border border-red-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white" id="grid-email"></input>
+                </div>
+                <div className="w-full md:w-1/2 px-3 md:mb-0">
+                  <label className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2 text-left">
+                    Phone Number
+                  </label>
+                  <input className="appearance-none block w-full bg-gray-200 text-gray-700 border border-red-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white" id="grid-phone-number"></input>
+                </div>
               </div>
-            </div> */}
+
+              <div className="w-full px-3 md:mb-0">
+                  <label className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2 text-left">
+                    Subject
+                  </label>
+                  <input className="appearance-none block w-full bg-gray-200 text-gray-700 border border-red-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white" id="grid-subject"></input>
+                </div>
+
+                <div className="w-full px-3 md:mb-0">
+                  <label className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2 text-left">
+                    Message
+                  </label>
+                  <textarea  className="appearance-none block w-full bg-gray-200 text-gray-700 border border-red-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none h-40 focus:bg-white" id="grid-message"></textarea>
+                </div>
+
+
+            </form>
             
           </div>
 
           {/* Left */}
-          <div className="flex flex-col bg-green-400 rounded p-4 gap-1">
+          <div className="flex flex-col bg-green-400 rounded p-4 gap-2">
             <h3 className="text-md text-white font-bold">
               Contact Information
             </h3>
@@ -40,7 +80,7 @@ export default function Home() {
               Nullam risus blandit ac aliquam justo ipsum. Quam mauris volutpat massa dictumst amet. Sapien tortor lacus arcu
             </p>
 
-            <div className="flex text-white justify-center space-x-10">
+            <div className="flex flex-col text-white justify-center space-x-10">
               <span>
                 <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 inline-block" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
@@ -57,8 +97,6 @@ export default function Home() {
             </div>
 
             <div className="flex space-x-20 justify-center">
-              {/* https://stackoverflow.com/questions/18566608/how-do-i-add-an-a-link-to-an-icon-in-bootstrap */}
-              
 
               <svg className="h-6 w-6" role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                 <title>Facebook</title>
