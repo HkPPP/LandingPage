@@ -52,7 +52,7 @@ export default function Home() {
                 </div>
               </div>
 
-              <div className="w-full px-3 md:mb-0">
+                <div className="w-full px-3 md:mb-0">
                   <label className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2 text-left">
                     Subject
                   </label>
