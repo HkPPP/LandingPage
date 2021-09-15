@@ -57,10 +57,10 @@ export function SocialMediaIcons() {
 
 export function IconWithLink(title: string, link:string, svgIconPath:string) {
     return(
-        <svg className="h-6 w-6" role="img" viewBox="0 0 30 30" xmlns="http://www.w3.org/2000/svg">
+        <svg className="h-6 w-6"  key={title.replace(/\s/g, "").toLowerCase()} role="img" viewBox="0 0 30 30" xmlns="http://www.w3.org/2000/svg">
             <title>{title}</title>
             <a href={link} target="_blank" rel="noopener noreferrer">
-                <path d={svgIconPath}/>
+            <path d={svgIconPath}/>
             </a>
         </svg>
     )
@@ -79,11 +79,11 @@ export function ContactUs() {
 
 export function IconWithText(text: string, svgIconPath:string) {
     return (
-        <span>
-            <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 inline-block" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <span key={text.replace(/\s/g, "").toLowerCase()} >
+            <svg className="h-6 w-6 inline-block" xmlns="http://www.w3.org/2000/svg"  fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d={svgIconPath} />
             </svg>
-            <span className="ml-2">{text}</span>
+            <span className="ml-2" >{text}</span>
         </span>
     );
     }
