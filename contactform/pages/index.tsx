@@ -5,6 +5,7 @@ import { ContactForm} from '../components/contactForm'
 export default function Home() {
   return (
     <div>
+
       <Head>
         <title>Contact Form</title>
         <meta name="description" content="Submit a contact form" />
@@ -15,18 +16,19 @@ export default function Home() {
         ></link>
       </Head>
 
-      <body className="min-h-screen bg-white text-center">
+      <main className="min-h-screen bg-white text-center">
         <div className="bg-white rounded p-4">
           <ContactForm/>
         </div>
 
-        <div className="bg-green-400 rounded p-4 gap-2">
+        <div className="bg-green-400 rounded p-4 space-y-3.5">
           <InfoBoxHeader/>
           <InfoBoxIntro/>
           <ContactUs/>
           <SocialMediaIcons/>
         </div>
-      </body>
+      </main>
+      
     </div>
   )
 }
