@@ -8,11 +8,15 @@ import React from 'react'
 
 export function ContactForm () {
 
+    // const phoneRegExp = /^((\\+[1-9]{1,4}[ \\-]*)|(\\([0-9]{2,3}\\)[ \\-]*)|([0-9]{2,4})[ \\-]*)*?[0-9]{3,4}?[ \\-]*[0-9]{3,4}?$/
+    // phone: yup.string().matches(phoneRegExp, 'Phone number is not valid').notRequired(),
+
+
     const schema = yup.object().shape({
         firstName: yup.string().required("First Name is required"),
         lastName: yup.string().required("Last Name is required"),
         email: yup.string().email("Must be a valid email").required("Email is required"),
-        phone: yup.number().typeError("Must be a number").positive("Must be a phone number").integer("Must be a number").min(9,"Phone number must be 9 digits.").max(9, "Phone number must be 9 digits."),
+        phone: yup.number().transform(value => (isNaN(value) ? undefined : value)).typeError("Must be a number").positive("Must be a phone number").integer("Must be a number").notRequired(),
         subject: yup.string().required("Subject is required"),
         message: yup.string().required("Message is required").max(500, "Message is longer than 500 characters"),
     });
@@ -37,13 +41,14 @@ export function ContactForm () {
     const fieldStyle: string = "appearance-none block w-full bg-gray-200 text-gray-700 border border-black rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white"
 
 
-    function LabelAndInput({label, schemaName, placeHolder}: {label: string, schemaName: string, placeHolder: string}){
+    function LabelAndInput({label, schemaName, placeHolder, type = "text"}: {label: string, schemaName: string, placeHolder: string, type: string}){
         return (
             <>
                 <label className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2 text-left">
                     {label} 
                 </label>
                 <input 
+                    type={type}
                     className={fieldStyle}
                     {...register(schemaName)}
                     placeholder={placeHolder} >
@@ -95,7 +100,7 @@ export function ContactForm () {
 
             <SideBySideWrapper>
                 <LabelAndInput label="Email" schemaName="email" placeHolder="abc@mail.com"/>
-                <LabelAndInput label="Phone Number" schemaName="phone" placeHolder="123456789"/>
+                <LabelAndInput label="Phone Number" schemaName="phone" placeHolder="123456789" type="number"/>
             </SideBySideWrapper>
 
             <div className="w-full px-3 md:mb-0">
@@ -106,9 +111,7 @@ export function ContactForm () {
                 <LabelAndTextArea label="Message" schemaName="message" placeHolder="Message"/>
             </div>
 
-            <button className="bg-gray-500 hover:bg-black text-white font-bold py-2 px-4 rounded" type="submit">
-                Submit
-            </button>
+            <input className="bg-gray-500 hover:bg-black text-white font-bold py-2 px-4 rounded" type="submit"></input>
         </form>
     );
 }
