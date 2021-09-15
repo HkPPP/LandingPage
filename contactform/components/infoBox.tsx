@@ -48,9 +48,9 @@ export function InfoBoxIntro() {
 export function SocialMediaIcons() {
     return (
         <div className="flex space-x-20 justify-center">
-        {socials.map((social) => {
-            return (IconWithLink(social.name, social.link, social.svgPath))
-        })}
+            {socials.map((social) => {
+                return (IconWithLink(social.name, social.link, social.svgPath))
+            })}
         </div>
     )
 }
@@ -58,10 +58,10 @@ export function SocialMediaIcons() {
 export function IconWithLink(title: string, link:string, svgIconPath:string) {
     return(
         <svg className="h-6 w-6" role="img" viewBox="0 0 30 30" xmlns="http://www.w3.org/2000/svg">
-        <title>{title}</title>
-        <a href={link} target="_blank" rel="noopener noreferrer">
-            <path d={svgIconPath}/>
-        </a>
+            <title>{title}</title>
+            <a href={link} target="_blank" rel="noopener noreferrer">
+                <path d={svgIconPath}/>
+            </a>
         </svg>
     )
 }
@@ -70,9 +70,9 @@ export function IconWithLink(title: string, link:string, svgIconPath:string) {
 export function ContactUs() {
     return (
         <div className="flex flex-col text-white justify-center space-x-10">
-        {contacts.map((contact) => {
-            return (IconWithText(contact.name, contact.svgPath))
-        })}
+            {contacts.map((contact) => {
+                return (IconWithText(contact.name, contact.svgPath))
+            })}
         </div>
     );
 }
@@ -80,10 +80,10 @@ export function ContactUs() {
 export function IconWithText(text: string, svgIconPath:string) {
     return (
         <span>
-        <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 inline-block" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d={svgIconPath} />
-        </svg>
-        <text className="ml-2">{text}</text>
+            <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 inline-block" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d={svgIconPath} />
+            </svg>
+            <span className="ml-2">{text}</span>
         </span>
     );
     }
