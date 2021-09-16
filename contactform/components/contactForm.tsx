@@ -3,7 +3,8 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
 import React from 'react'
 
-
+import { storage } from "../firebase/clientApp";
+import { collection, addDoc } from "firebase/firestore"; 
 
 
 export function ContactForm () {
@@ -16,7 +17,7 @@ export function ContactForm () {
         firstName: yup.string().required("First Name is required"),
         lastName: yup.string().required("Last Name is required"),
         email: yup.string().email("Must be a valid email").required("Email is required"),
-        phone: yup.number().transform(value => (isNaN(value) ? undefined : value)).typeError("Must be a number").positive("Must be a phone number").integer("Must be a number").notRequired(),
+        phone: yup.number().typeError("Must be a number").positive("Must be a phone number").integer("Must be a number").transform(value => (isNaN(value) ? 1 : value)).notRequired(),
         subject: yup.string().required("Subject is required"),
         message: yup.string().required("Message is required").max(500, "Message is longer than 500 characters"),
     });
@@ -26,7 +27,13 @@ export function ContactForm () {
     });   
 
     const submitForm = (data) => {
-        console.log(data);
+        try {
+            const docRef =  addDoc(collection(storage, "contact"), data);
+            console.log(data);
+        } catch (e) {
+        console.error("Error adding document: ", e);
+        }
+
     };
 
     const errorDisplay = {
