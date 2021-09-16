@@ -16,16 +16,18 @@ export default function Home() {
         ></link>
       </Head>
 
-      <main className="min-h-screen bg-white text-center">
-        <div className="bg-white rounded p-4">
-          <ContactForm/>
-        </div>
+      <main className="min-h-screen bg-green-100 text-center ">
+        <div className="grid bg-white lg:grid-cols-3 lg:grid-flow-col 2xl:grid-cols-8 h-screen">
+          <div className="rounded p-4 lg:col-start-2 lg:col-span-2 lg:p-10 2xl:col-start-5 2xl:col-span-3 xl:py-24">
+            <ContactForm/>
+          </div>
 
-        <div className="bg-green-400 rounded p-4 space-y-3.5">
-          <InfoBoxHeader/>
-          <InfoBoxIntro/>
-          <ContactUs/>
-          <SocialMediaIcons/>
+          <div className="bg-green-400 rounded p-4 space-y-3.5 lg:col-start-1 lg:pt-40 lg:text-xl lg:space-y-8 xl:px-16 2xl:px-24 2xl:col-start-1 2xl:col-span-3 ">
+            <InfoBoxHeader/>
+            <InfoBoxIntro/>
+            <ContactUs/>
+            <SocialMediaIcons/>
+          </div>
         </div>
       </main>
       

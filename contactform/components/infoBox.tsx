@@ -57,7 +57,7 @@ export function SocialMediaIcons() {
 
 export function IconWithLink(title: string, link:string, svgIconPath:string) {
     return(
-        <svg className="h-6 w-6"  key={title.replace(/\s/g, "").toLowerCase()} role="img" viewBox="0 0 30 30" xmlns="http://www.w3.org/2000/svg">
+        <svg className="h-8 w-8"  key={title.replace(/\s/g, "").toLowerCase()} role="img" viewBox="0 0 30 30" xmlns="http://www.w3.org/2000/svg">
             <title>{title}</title>
             <a href={link} target="_blank" rel="noopener noreferrer">
             <path d={svgIconPath}/>

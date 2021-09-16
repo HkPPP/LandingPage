@@ -40,6 +40,11 @@ export function ContactForm () {
 
     const fieldStyle: string = "appearance-none block w-full bg-gray-200 text-gray-700 border border-black rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white"
 
+    function ErrorMsg({msg}: {msg: string}){
+        return (
+            <p className="text-red-600 italic text-left"> {errorDisplay[msg]} </p>
+        );
+    }
 
     function LabelAndInput({label, schemaName, placeHolder, type = "text"}: {label: string, schemaName: string, placeHolder: string, type: string}){
         return (
@@ -53,7 +58,7 @@ export function ContactForm () {
                     {...register(schemaName)}
                     placeholder={placeHolder} >
                 </input>
-                <p> {errorDisplay[schemaName]} </p>
+                <ErrorMsg msg={schemaName}/>
             </>
         );
     }
@@ -69,7 +74,7 @@ export function ContactForm () {
                     {...register(schemaName)}
                     placeholder={placeHolder} >
                 </textarea>
-                <p> {errorDisplay[schemaName]} </p>
+                <ErrorMsg msg={schemaName}/>
             </>
         );
     }
@@ -89,26 +94,26 @@ export function ContactForm () {
     }
 
     return(
-        <form className="w-full max-w-lg" onSubmit={handleSubmit(submitForm)}>
+        <form className="w-full max-w" onSubmit={handleSubmit(submitForm)}>
             <h2 className="text-black font-bold text-s">SEND US A MESSAGE</h2>
             
             <SideBySideWrapper>
-                <LabelAndInput label="First Name" schemaName="firstName" placeHolder="John"/>
-                <LabelAndInput label="Last Name" schemaName="lastName" placeHolder="Doe"/>
+                <LabelAndInput label="First Name" schemaName="firstName" placeHolder="Required..."/>
+                <LabelAndInput label="Last Name" schemaName="lastName" placeHolder="Required..."/>
             </SideBySideWrapper>
 
 
             <SideBySideWrapper>
-                <LabelAndInput label="Email" schemaName="email" placeHolder="abc@mail.com"/>
-                <LabelAndInput label="Phone Number" schemaName="phone" placeHolder="123456789" type="number"/>
+                <LabelAndInput label="Email" schemaName="email" placeHolder="Required..."/>
+                <LabelAndInput label="Phone Number" schemaName="phone" placeHolder="Optional..." type="number"/>
             </SideBySideWrapper>
 
             <div className="w-full px-3 md:mb-0">
-                <LabelAndInput label="Subject" schemaName="subject" placeHolder="Subject"/>
+                <LabelAndInput label="Subject" schemaName="subject" placeHolder="Required..."/>
             </div>
 
             <div className="w-full px-3 md:mb-0">
-                <LabelAndTextArea label="Message" schemaName="message" placeHolder="Message"/>
+                <LabelAndTextArea label="Message" schemaName="message" placeHolder="Required (500 characters max)..."/>
             </div>
 
             <input className="bg-gray-500 hover:bg-black text-white font-bold py-2 px-4 rounded" type="submit"></input>
