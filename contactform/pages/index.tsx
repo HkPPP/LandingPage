@@ -17,7 +17,9 @@ export default function Home() {
       </Head>
 
       <main className="min-h-screen bg-green-100 text-center ">
+
         <div className="grid bg-white lg:grid-cols-3 lg:grid-flow-col 2xl:grid-cols-8 h-screen">
+
           <div className="rounded p-4 lg:col-start-2 lg:col-span-2 lg:p-10 2xl:col-start-5 2xl:col-span-3 xl:py-24">
             <ContactForm/>
           </div>
@@ -28,7 +30,9 @@ export default function Home() {
             <ContactUs/>
             <SocialMediaIcons/>
           </div>
+
         </div>
+
       </main>
       
     </div>
