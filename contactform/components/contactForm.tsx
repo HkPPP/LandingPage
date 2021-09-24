@@ -8,10 +8,10 @@ import { collection, addDoc } from "firebase/firestore";
 
 function SideBySideWrapper({children}: {children: any}){
     return (
-        <div className="flex flex-wrap -mx-3 p-4">
+        <div className="flex flex-wrap -mx-3 space-y-4 px-4 p-4 pt-1 md:pt-4 md:space-y-0">
                 {React.Children.map(children, child => {
                     return (
-                        <div className="w-full md:w-1/2 px-3 md:mb-0">
+                        <div className="w-full px-3 md:w-1/2 md:mb-0">
                             {child}
                         </div>
                     )
@@ -71,7 +71,7 @@ export function ContactForm () {
         return (
             <>
                 <label className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2 text-left">
-                    {label} 
+                    {label}
                 </label>
                 <input 
                     type={type}
@@ -110,7 +110,7 @@ export function ContactForm () {
 
     return(
         <form className="w-full max-w" onSubmit={handleSubmit(submitForm)}>
-            <h2 className="text-black font-bold text-s">SEND US A MESSAGE</h2>
+            <h2 className="text-black font-bold text-s p-4 ">SEND US A MESSAGE</h2>
             
             <SideBySideWrapper>
                 {firstNameInput}
@@ -122,15 +122,15 @@ export function ContactForm () {
                 {phoneInput}
             </SideBySideWrapper>
 
-            <div className="w-full px-3 md:mb-0">
+            <div className="w-full px-4 py-2 md:p-4 md:mx-1">
                 {subjectInput}
             </div>
 
-            <div className="w-full px-3 md:mb-0">
+            <div className="w-full px-4 py-2 md:p-4 md:mx-1">
                 {messageInput}
             </div>
 
-            <input className="bg-gray-500 hover:bg-black text-white font-bold py-2 px-4 rounded" type="submit"></input>
+            <input className="bg-gray-500 hover:bg-black text-white font-bold py-2 px-4 mb-4 rounded" type="submit"></input>
         </form>
     );
 }
