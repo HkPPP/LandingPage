@@ -36,7 +36,8 @@ export function ContactForm () {
         message: yup.string().required("Message is required").max(500, "Message is longer than 500 characters"),
     });
 
-    const { register, handleSubmit, reset, formState: { errors } } = useForm({
+    const { register, handleSubmit, reset, formState: { errors, isValid } } = useForm({
+        mode: 'onChange',
         resolver: yupResolver(schema),
     });   
 
@@ -130,7 +131,14 @@ export function ContactForm () {
                 {messageInput}
             </div>
 
-            <input className="bg-gray-500 hover:bg-black text-white font-bold py-2 px-4 mb-4 rounded" type="submit"></input>
+            {isValid 
+            ? <input className="bg-gray-500 text-white font-bold py-2 px-4 mb-4 hover:bg-black rounded" 
+            disabled={false}
+            type="submit"></input> 
+            : <input className="bg-gray-200 text-white font-bold py-2 px-4 mb-4 rounded " 
+            disabled={true}
+            type="submit"></input>}
+            
         </form>
     );
 }
