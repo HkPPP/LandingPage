@@ -5,6 +5,7 @@ import React from 'react'
 
 import { storage } from "../firebase/clientApp";
 import { collection, addDoc } from "firebase/firestore"; 
+import { isUndefined } from "lodash";
 
 function SideBySideWrapper({children}: {children: any}){
     return (
@@ -22,18 +23,33 @@ function SideBySideWrapper({children}: {children: any}){
 
 export function ContactForm () {
 
-    // const phoneRegExp = /^((\\+[1-9]{1,4}[ \\-]*)|(\\([0-9]{2,3}\\)[ \\-]*)|([0-9]{2,4})[ \\-]*)*?[0-9]{3,4}?[ \\-]*[0-9]{3,4}?$/
-    // phone: yup.string().matches(phoneRegExp, 'Phone number is not valid').notRequired(),
+    // Phone validation based on integers
+    // phone: yup.number().typeError("Must be a number").positive("Must be a phone number").integer("Must be a number").transform(value => (isNaN(value) ? 1 : value)).notRequired(),
 
     const fieldStyle: string = "appearance-none block w-full bg-gray-200 text-gray-700 border border-black rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white"
 
+    const phoneRegExp = /^((\\+[1-9]{1,4}[ \\-]*)|(\\([0-9]{2,3}\\)[ \\-]*)|([0-9]{2,4})[ \\-]*)*?[0-9]{3,4}?[ \\-]*[0-9]{3,4}?$/
+
     const schema = yup.object().shape({
-        firstName: yup.string().required("First Name is required"),
-        lastName: yup.string().required("Last Name is required"),
-        email: yup.string().email("Must be a valid email").required("Email is required"),
-        phone: yup.number().typeError("Must be a number").positive("Must be a phone number").integer("Must be a number").transform(value => (isNaN(value) ? 1 : value)).notRequired(),
-        subject: yup.string().required("Subject is required"),
-        message: yup.string().required("Message is required").max(500, "Message is longer than 500 characters"),
+        firstName: yup.string()
+            .required("First Name is required"),
+        lastName: yup.string()
+            .required("Last Name is required"),
+        email: yup.string()
+            .email("Must be a valid email")
+            .required("Email is required"),
+        phone: yup.string()
+            .matches(phoneRegExp, { message:'Phone number is not valid', excludeEmptyString: true })
+            .test('len-test', "Must be exactly 10 digits", 
+                val => (!isUndefined(val) && (val.length === 10 || val.length === 0)) ? true : false)
+            .notRequired()
+            .transform(value => (isUndefined(value) ? "" : value))
+            ,
+        subject: yup.string()
+            .required("Subject is required"),
+        message: yup.string()
+            .required("Message is required")
+            .max(500, "Message should be no longer than 500 characters"),
     });
 
     const { register, handleSubmit, reset, formState: { errors, isValid } } = useForm({
@@ -142,4 +158,3 @@ export function ContactForm () {
         </form>
     );
 }
-
